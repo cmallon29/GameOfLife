@@ -1,14 +1,34 @@
+package game;
+
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
-public class Main {
 
-	private static final boolean False = false;
+public class Skeleton
+{
 	private JFrame frame;
+	
+	private JButton spinButton;
+	private Timer timer;
+	private JPanel spinner;
+	private Player[] player;
+	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_3;
 	private JTextField textField_4;
@@ -30,6 +50,7 @@ public class Main {
 	private JTextField textField_20;
 	private JTextField textField_21;
 	private JTextField textField_22;
+	private JTextField textField_23;
 	private JTextField textField_24;
 	private JTextField textField_25;
 	private JTextField textField_26;
@@ -53,6 +74,7 @@ public class Main {
 	private JTextField textField_44;
 	private JTextField textField_45;
 	private JTextField textField_46;
+	private JTextField textField_47;
 	private JTextField textField_48;
 	private JTextField textField_49;
 	private JTextField textField_50;
@@ -104,15 +126,25 @@ public class Main {
 	private JTextField textField_96;
 	private JTextField textField_97;
 	private JTextField textField_98;
+	private JTextField textField_99;
+	private JTextField textField_100;
+	private JTextField textField_101;
+	private JTextField textField_102;
+	private JTextField textField_103;
+	private JTextField textField_104;
+	private JTextField textField_105;
+	private JTextField textField_106;
+	private JTextField textField_107;
 
 	/**
 	 * Launch the application.
+	 * @param genders 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, Boolean[] genders) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main window = new Main();
+					Skeleton window = new Skeleton(args, genders);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -121,34 +153,35 @@ public class Main {
 		});
 	}
 
-
 	/**
 	 * Create the application.
 	 */
-	public Main() {
+	public Skeleton(String[] args, Boolean[] genders) {
 		initialize();
-		
+		player = new Player[args.length];
+		for (int x = 0; x < args.length; x++)
+		{
+//			player[x].setName(args[x]);
+//			player[x].setGender(genders[x]);
+//			player[x].setPosition(528, 37, 86, 31);
+		}
 	}
-
 
 	/**
 	 * Initialise the contents of the frame.
 	 */
-	private void initialize() {
-
-		
+	private void initialize() {	
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(135, 206, 250));
 		frame.setBounds(100, 100, 1198, 780);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		
 		//main island
 		textField_1 = new JTextField();
 		textField_1.setBackground(new Color(240, 230, 140));
 		textField_1.setBounds(528, 37, 86, 31);
-		textField_1.setEditable(False);
+		textField_1.setEditable(false);
 		textField_1.setText("Uni or Career");
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
@@ -158,7 +191,7 @@ public class Main {
 		textField_3.setColumns(10);
 		textField_3.setBackground(new Color(240, 230, 140));
 		textField_3.setBounds(361, 148, 66, 31);
-		textField_3.setEditable(False);
+		textField_3.setEditable(false);
 		textField_3.setText("Pick a Career");
 		frame.getContentPane().add(textField_3);
 		
@@ -166,7 +199,7 @@ public class Main {
 		textField_4.setColumns(10);
 		textField_4.setBackground(new Color(240, 230, 140));
 		textField_4.setBounds(379, 106, 66, 31);
-		textField_4.setEditable(False);
+		textField_4.setEditable(false);
 		textField_4.setText("Collect 30K");
 		frame.getContentPane().add(textField_4);
 		
@@ -174,7 +207,7 @@ public class Main {
 		textField_5.setColumns(10);
 		textField_5.setBackground(new Color(240, 230, 140));
 		textField_5.setBounds(328, 190, 78, 31);
-		textField_5.setEditable(False);
+		textField_5.setEditable(false);
 		textField_5.setText("Pay 20K");
 		frame.getContentPane().add(textField_5);
 		
@@ -182,7 +215,7 @@ public class Main {
 		textField_6.setColumns(10);
 		textField_6.setBackground(new Color(240, 230, 140));
 		textField_6.setBounds(331, 232, 75, 45);
-		textField_6.setEditable(False);
+		textField_6.setEditable(false);
 		textField_6.setText("Collect 20K");
 		frame.getContentPane().add(textField_6);
 		
@@ -190,7 +223,7 @@ public class Main {
 		textField_7.setColumns(10);
 		textField_7.setBackground(new Color(240, 230, 140));
 		textField_7.setBounds(342, 288, 75, 45);
-		textField_7.setEditable(False);
+		textField_7.setEditable(false);
 		textField_7.setText("Collect 100K");
 		frame.getContentPane().add(textField_7);
 		
@@ -198,7 +231,7 @@ public class Main {
 		textField_8.setColumns(10);
 		textField_8.setBackground(new Color(240, 230, 140));
 		textField_8.setBounds(379, 344, 78, 45);
-		textField_8.setEditable(False);
+		textField_8.setEditable(false);
 		textField_8.setText("Collect 20K");
 		frame.getContentPane().add(textField_8);
 		
@@ -206,7 +239,7 @@ public class Main {
 		textField_9.setColumns(10);
 		textField_9.setBackground(new Color(240, 230, 140));
 		textField_9.setBounds(473, 363, 67, 45);
-		textField_9.setEditable(False);
+		textField_9.setEditable(false);
 		textField_9.setText("Pay 30K");
 		frame.getContentPane().add(textField_9);
 		
@@ -214,7 +247,7 @@ public class Main {
 		textField_10.setColumns(10);
 		textField_10.setBackground(new Color(240, 230, 140));
 		textField_10.setBounds(550, 344, 75, 45);
-		textField_10.setEditable(False);
+		textField_10.setEditable(false);
 		textField_10.setText("Collect 40K");
 		frame.getContentPane().add(textField_10);
 		
@@ -222,7 +255,7 @@ public class Main {
 		textField_11.setColumns(10);
 		textField_11.setBackground(new Color(240, 230, 140));
 		textField_11.setBounds(632, 324, 67, 38);
-		textField_11.setEditable(False);
+		textField_11.setEditable(false);
 		textField_11.setText("Stop");
 		frame.getContentPane().add(textField_11);
 		//end of uni path
@@ -232,7 +265,7 @@ public class Main {
 		textField_12.setColumns(10);
 		textField_12.setBackground(new Color(240, 230, 140));
 		textField_12.setBounds(631, 96, 86, 31);
-		textField_12.setEditable(False);
+		textField_12.setEditable(false);
 		textField_12.setText("Payday");
 		frame.getContentPane().add(textField_12);
 		
@@ -240,7 +273,7 @@ public class Main {
 		textField_13.setColumns(10);
 		textField_13.setBackground(new Color(240, 230, 140));
 		textField_13.setBounds(658, 138, 86, 31);
-		textField_13.setEditable(False);
+		textField_13.setEditable(false);
 		textField_13.setText("Collect 30K");
 		frame.getContentPane().add(textField_13);
 		
@@ -248,7 +281,7 @@ public class Main {
 		textField_14.setColumns(10);
 		textField_14.setBackground(new Color(240, 230, 140));
 		textField_14.setBounds(680, 187, 86, 31);
-		textField_14.setEditable(False);
+		textField_14.setEditable(false);
 		textField_14.setText("Pay 20K");
 		frame.getContentPane().add(textField_14);
 		
@@ -256,7 +289,7 @@ public class Main {
 		textField_15.setColumns(10);
 		textField_15.setBackground(new Color(240, 230, 140));
 		textField_15.setBounds(708, 238, 76, 40);
-		textField_15.setEditable(False);
+		textField_15.setEditable(false);
 		textField_15.setText("Collect 100K");
 		frame.getContentPane().add(textField_15);
 		
@@ -264,7 +297,7 @@ public class Main {
 		textField_16.setColumns(10);
 		textField_16.setBackground(new Color(240, 230, 140));
 		textField_16.setBounds(717, 286, 67, 31);
-		textField_16.setEditable(False);
+		textField_16.setEditable(false);
 		textField_16.setText("Collect 10K");
 		frame.getContentPane().add(textField_16);
 		
@@ -272,7 +305,7 @@ public class Main {
 		textField_17.setColumns(10);
 		textField_17.setBackground(new Color(240, 230, 140));
 		textField_17.setBounds(709, 328, 75, 31);
-		textField_17.setEditable(False);
+		textField_17.setEditable(false);
 		textField_17.setText("Collect 30K");
 		frame.getContentPane().add(textField_17);
 		
@@ -280,7 +313,7 @@ public class Main {
 		textField_18.setColumns(10);
 		textField_18.setBackground(new Color(240, 230, 140));
 		textField_18.setBounds(682, 370, 67, 38);
-		textField_18.setEditable(False);
+		textField_18.setEditable(false);
 		textField_18.setText("Collect 30K");
 		frame.getContentPane().add(textField_18);
 		
@@ -288,7 +321,7 @@ public class Main {
 		textField_19.setColumns(10);
 		textField_19.setBackground(new Color(240, 230, 140));
 		textField_19.setBounds(613, 400, 67, 38);
-		textField_19.setEditable(False);
+		textField_19.setEditable(false);
 		textField_19.setText("Take off");
 		frame.getContentPane().add(textField_19);
 		
@@ -296,7 +329,7 @@ public class Main {
 		textField_20.setColumns(10);
 		textField_20.setBackground(new Color(240, 230, 140));
 		textField_20.setBounds(539, 414, 67, 45);
-		textField_20.setEditable(False);
+		textField_20.setEditable(false);
 		textField_20.setText("Spin to Win 100K");
 		frame.getContentPane().add(textField_20);
 		
@@ -304,7 +337,7 @@ public class Main {
 		textField_21.setColumns(10);
 		textField_21.setBackground(new Color(240, 230, 140));
 		textField_21.setBounds(473, 417, 57, 38);
-		textField_21.setEditable(False);
+		textField_21.setEditable(false);
 		textField_21.setText("Payday");
 		frame.getContentPane().add(textField_21);
 		
@@ -312,7 +345,7 @@ public class Main {
 		textField_22.setColumns(10);
 		textField_22.setBackground(new Color(240, 230, 140));
 		textField_22.setBounds(390, 414, 75, 45);
-		textField_22.setEditable(False);
+		textField_22.setEditable(false);
 		textField_22.setText("Collect 20K from each player");
 		frame.getContentPane().add(textField_22);
 
@@ -321,7 +354,7 @@ public class Main {
 		textField_24.setColumns(10);
 		textField_24.setBackground(new Color(240, 230, 140));
 		textField_24.setBounds(63, 302, 67, 41);
-		textField_24.setEditable(False);
+		textField_24.setEditable(false);
 		textField_24.setText("Stop (ship off to island one)");
 		frame.getContentPane().add(textField_24);
 		//end of career path
@@ -331,7 +364,7 @@ public class Main {
 		textField_25.setColumns(10);
 		textField_25.setBackground(new Color(240, 230, 140));
 		textField_25.setBounds(140, 299, 57, 31);
-		textField_25.setEditable(False);
+		textField_25.setEditable(false);
 		textField_25.setText("(Give option to buy house)");
 		frame.getContentPane().add(textField_25);
 		
@@ -339,7 +372,7 @@ public class Main {
 		textField_26.setColumns(10);
 		textField_26.setBackground(new Color(240, 230, 140));
 		textField_26.setBounds(160, 266, 57, 26);
-		textField_26.setEditable(False);
+		textField_26.setEditable(false);
 		textField_26.setText("Spin to win 100K");
 		frame.getContentPane().add(textField_26);
 		
@@ -347,7 +380,7 @@ public class Main {
 		textField_27.setColumns(10);
 		textField_27.setBackground(new Color(240, 230, 140));
 		textField_27.setBounds(171, 217, 46, 38);
-		textField_27.setEditable(False);
+		textField_27.setEditable(false);
 		textField_27.setText("Collect 40K");
 		frame.getContentPane().add(textField_27);
 		
@@ -355,7 +388,7 @@ public class Main {
 		textField_28.setColumns(10);
 		textField_28.setBackground(new Color(240, 230, 140));
 		textField_28.setBounds(181, 175, 57, 31);
-		textField_28.setEditable(False);
+		textField_28.setEditable(false);
 		textField_28.setText("(Blank tile)");
 		frame.getContentPane().add(textField_28);
 		
@@ -363,7 +396,7 @@ public class Main {
 		textField_29.setColumns(10);
 		textField_29.setBackground(new Color(240, 230, 140));
 		textField_29.setBounds(199, 138, 57, 31);
-		textField_29.setEditable(False);
+		textField_29.setEditable(false);
 		textField_29.setText("Take 50K from another player");
 		frame.getContentPane().add(textField_29);
 		
@@ -371,7 +404,7 @@ public class Main {
 		textField_30.setColumns(10);
 		textField_30.setBackground(new Color(240, 230, 140));
 		textField_30.setBounds(217, 96, 57, 31);
-		textField_30.setEditable(False);
+		textField_30.setEditable(false);
 		textField_30.setText("(Blank tile)");
 		frame.getContentPane().add(textField_30);
 		
@@ -379,7 +412,7 @@ public class Main {
 		textField_31.setColumns(10);
 		textField_31.setBackground(new Color(240, 230, 140));
 		textField_31.setBounds(207, 21, 67, 31);
-		textField_31.setEditable(False);
+		textField_31.setEditable(false);
 		textField_31.setText("(Blank tile)");
 		frame.getContentPane().add(textField_31);
 		
@@ -387,7 +420,7 @@ public class Main {
 		textField_32.setColumns(10);
 		textField_32.setBackground(new Color(240, 230, 140));
 		textField_32.setBounds(140, 11, 63, 31);
-		textField_32.setEditable(False);
+		textField_32.setEditable(false);
 		textField_32.setText("Pay 30K");
 		frame.getContentPane().add(textField_32);
 		
@@ -395,7 +428,7 @@ public class Main {
 		textField_33.setColumns(10);
 		textField_33.setBackground(new Color(240, 230, 140));
 		textField_33.setBounds(80, 11, 57, 31);
-		textField_33.setEditable(False);
+		textField_33.setEditable(false);
 		textField_33.setText("(Blank tile)");
 		frame.getContentPane().add(textField_33);
 		
@@ -403,15 +436,15 @@ public class Main {
 		textField_34.setColumns(10);
 		textField_34.setBackground(new Color(240, 230, 140));
 		textField_34.setBounds(217, 63, 67, 26);
-		textField_34.setEditable(False);
-		textField_34.setText("(Pub crawl, Pay 20K (Collect pub crawl token))");
+		textField_34.setEditable(false);
+		textField_34.setText("(Pub crawl, Pay 20K (Collect pub crawl 		token))");
 		frame.getContentPane().add(textField_34);
 		
 		textField_35 = new JTextField();
 		textField_35.setColumns(10);
 		textField_35.setBackground(new Color(240, 230, 140));
 		textField_35.setBounds(10, 37, 57, 31);
-		textField_35.setEditable(False);
+		textField_35.setEditable(false);
 		textField_35.setText("(Blank tile)");
 		frame.getContentPane().add(textField_35);
 		
@@ -419,7 +452,7 @@ public class Main {
 		textField_36.setColumns(10);
 		textField_36.setBackground(new Color(240, 230, 140));
 		textField_36.setBounds(20, 76, 57, 31);
-		textField_36.setEditable(False);
+		textField_36.setEditable(false);
 		textField_36.setText("Stop(Collect 100K)");
 		frame.getContentPane().add(textField_36);
 		
@@ -427,7 +460,7 @@ public class Main {
 		textField_37.setColumns(10);
 		textField_37.setBackground(new Color(240, 230, 140));
 		textField_37.setBounds(10, 124, 57, 31);
-		textField_37.setEditable(False);
+		textField_37.setEditable(false);
 		textField_37.setText("(Give option to buy house)");
 		frame.getContentPane().add(textField_37);
 		
@@ -435,7 +468,7 @@ public class Main {
 		textField_38.setColumns(10);
 		textField_38.setBackground(new Color(240, 230, 140));
 		textField_38.setBounds(10, 171, 57, 31);
-		textField_38.setEditable(False);
+		textField_38.setEditable(false);
 		textField_38.setText("Collect 20K");
 		frame.getContentPane().add(textField_38);
 		
@@ -443,7 +476,7 @@ public class Main {
 		textField_39.setColumns(10);
 		textField_39.setBackground(new Color(240, 230, 140));
 		textField_39.setBounds(20, 213, 57, 31);
-		textField_39.setEditable(False);
+		textField_39.setEditable(false);
 		textField_39.setText("Get a pet");
 		frame.getContentPane().add(textField_39);
 		
@@ -451,7 +484,7 @@ public class Main {
 		textField_40.setColumns(10);
 		textField_40.setBackground(new Color(240, 230, 140));
 		textField_40.setBounds(20, 259, 57, 31);
-		textField_40.setEditable(False);
+		textField_40.setEditable(false);
 		textField_40.setText("(Blank tile)");
 		frame.getContentPane().add(textField_40);
 		
@@ -459,7 +492,7 @@ public class Main {
 		textField_41.setColumns(10);
 		textField_41.setBackground(new Color(240, 230, 140));
 		textField_41.setBounds(747, 26, 57, 31);
-		textField_41.setEditable(False);
+		textField_41.setEditable(false);
 		textField_41.setText("(Blank tile)");
 		frame.getContentPane().add(textField_41);
 		
@@ -467,7 +500,7 @@ public class Main {
 		textField_42.setColumns(10);
 		textField_42.setBackground(new Color(240, 230, 140));
 		textField_42.setBounds(824, 26, 57, 31);
-		textField_42.setEditable(False);
+		textField_42.setEditable(false);
 		textField_42.setText("Take off");
 		frame.getContentPane().add(textField_42);
 		//end of island one
@@ -477,7 +510,7 @@ public class Main {
 		textField_43.setColumns(10);
 		textField_43.setBackground(new Color(240, 230, 140));
 		textField_43.setBounds(902, 26, 57, 31);
-		textField_43.setEditable(False);
+		textField_43.setEditable(false);
 		textField_43.setText("Spin to win 100K");
 		frame.getContentPane().add(textField_43);
 		
@@ -485,7 +518,7 @@ public class Main {
 		textField_44.setColumns(10);
 		textField_44.setBackground(new Color(240, 230, 140));
 		textField_44.setBounds(970, 26, 57, 31);
-		textField_44.setEditable(False);
+		textField_44.setEditable(false);
 		textField_44.setText("(Blank tile)");
 		frame.getContentPane().add(textField_44);
 		
@@ -493,7 +526,7 @@ public class Main {
 		textField_45.setColumns(10);
 		textField_45.setBackground(new Color(240, 230, 140));
 		textField_45.setBounds(1038, 26, 57, 31);
-		textField_45.setEditable(False);
+		textField_45.setEditable(false);
 		textField_45.setText("Sue another player for 50K");
 		frame.getContentPane().add(textField_45);
 		
@@ -501,7 +534,7 @@ public class Main {
 		textField_46.setColumns(10);
 		textField_46.setBackground(new Color(240, 230, 140));
 		textField_46.setBounds(1038, 66, 57, 31);
-		textField_46.setEditable(False);
+		textField_46.setEditable(false);
 		textField_46.setText("Have a baby/ get married");
 		frame.getContentPane().add(textField_46);
 		
@@ -509,7 +542,7 @@ public class Main {
 		textField_48.setColumns(10);
 		textField_48.setBackground(new Color(240, 230, 140));
 		textField_48.setBounds(1038, 153, 57, 31);
-		textField_48.setEditable(False);
+		textField_48.setEditable(false);
 		textField_48.setText("(Give option to buy a house)");
 		frame.getContentPane().add(textField_48);
 		
@@ -517,7 +550,7 @@ public class Main {
 		textField_49.setColumns(10);
 		textField_49.setBackground(new Color(240, 230, 140));
 		textField_49.setBounds(1038, 194, 57, 31);
-		textField_49.setEditable(False);
+		textField_49.setEditable(false);
 		textField_49.setText("Take off");
 		frame.getContentPane().add(textField_49);
 		
@@ -525,7 +558,7 @@ public class Main {
 		textField_50.setColumns(10);
 		textField_50.setBackground(new Color(240, 230, 140));
 		textField_50.setBounds(1038, 236, 57, 31);
-		textField_50.setEditable(False);
+		textField_50.setEditable(false);
 		textField_50.setText("Promotion");
 		frame.getContentPane().add(textField_50);
 		
@@ -533,15 +566,16 @@ public class Main {
 		textField_51.setColumns(10);
 		textField_51.setBackground(new Color(240, 230, 140));
 		textField_51.setBounds(970, 192, 57, 31);
-		textField_51.setEditable(False);
-		textField_51.setText("Collect 50K");
+		textField_51.setEditable(false);
+		textField_51.setText("Collect 50k");
+		
 		frame.getContentPane().add(textField_51);
 		
 		textField_52 = new JTextField();
 		textField_52.setColumns(10);
 		textField_52.setBackground(new Color(240, 230, 140));
 		textField_52.setBounds(902, 192, 57, 31);
-		textField_52.setEditable(False);
+		textField_52.setEditable(false);
 		textField_52.setText("Payday");
 		frame.getContentPane().add(textField_52);
 		
@@ -549,7 +583,7 @@ public class Main {
 		textField_53.setColumns(10);
 		textField_53.setBackground(new Color(240, 230, 140));
 		textField_53.setBounds(824, 192, 57, 31);
-		textField_53.setEditable(False);
+		textField_53.setEditable(false);
 		textField_53.setText("(Blank tile)");
 		frame.getContentPane().add(textField_53);
 		
@@ -557,15 +591,15 @@ public class Main {
 		textField_54.setColumns(10);
 		textField_54.setBackground(new Color(240, 230, 140));
 		textField_54.setBounds(796, 143, 57, 31);
-		textField_54.setEditable(False);
-		textField_54.setText("Hospital Pay 100K(Collect cool scar token)");
+		textField_54.setEditable(false);
+		textField_54.setText("Hospital Pay 100K(Collect cool scar 			token)");
 		frame.getContentPane().add(textField_54);
 		
 		textField_55 = new JTextField();
 		textField_55.setColumns(10);
 		textField_55.setBackground(new Color(240, 230, 140));
 		textField_55.setBounds(777, 85, 57, 31);
-		textField_55.setEditable(False);
+		textField_55.setEditable(false);
 		textField_55.setText("(Blank tile)");
 		frame.getContentPane().add(textField_55);
 		
@@ -573,8 +607,8 @@ public class Main {
 		textField_56.setColumns(10);
 		textField_56.setBackground(new Color(240, 230, 140));
 		textField_56.setBounds(1038, 278, 57, 31);
-		textField_56.setEditable(False);
-		textField_56.setText("Pay 70K (choose to go right or straight)");
+		textField_56.setEditable(false);
+		textField_56.setText("Pay 70K (choose to go right or 			straight)");
 		frame.getContentPane().add(textField_56);
 		//Straight path joins back to sue another player for 50K
 		
@@ -583,7 +617,7 @@ public class Main {
 		textField_57.setColumns(10);
 		textField_57.setBackground(new Color(240, 230, 140));
 		textField_57.setBounds(1038, 324, 57, 31);
-		textField_57.setEditable(False);
+		textField_57.setEditable(false);
 		textField_57.setText("(Blank tile)");
 		frame.getContentPane().add(textField_57);
 		
@@ -591,7 +625,7 @@ public class Main {
 		textField_58.setColumns(10);
 		textField_58.setBackground(new Color(240, 230, 140));
 		textField_58.setBounds(951, 311, 57, 31);
-		textField_58.setEditable(False);
+		textField_58.setEditable(false);
 		textField_58.setText("Payday");
 		frame.getContentPane().add(textField_58);
 		
@@ -599,7 +633,7 @@ public class Main {
 		textField_59.setColumns(10);
 		textField_59.setBackground(new Color(240, 230, 140));
 		textField_59.setBounds(882, 292, 57, 31);
-		textField_59.setEditable(False);
+		textField_59.setEditable(false);
 		textField_59.setText("Take off");
 		frame.getContentPane().add(textField_59);
 		//End of island two
@@ -610,7 +644,7 @@ public class Main {
 		textField_60.setColumns(10);
 		textField_60.setBackground(new Color(240, 230, 140));
 		textField_60.setBounds(855, 248, 57, 31);
-		textField_60.setEditable(False);
+		textField_60.setEditable(false);
 		textField_60.setText("Collect 100K");
 		frame.getContentPane().add(textField_60);
 		
@@ -618,7 +652,7 @@ public class Main {
 		textField_61.setColumns(10);
 		textField_61.setBackground(new Color(240, 230, 140));
 		textField_61.setBounds(709, 481, 57, 31);
-		textField_61.setEditable(False);
+		textField_61.setEditable(false);
 		textField_61.setText("(Blank tile)");
 		frame.getContentPane().add(textField_61);
 		
@@ -626,8 +660,8 @@ public class Main {
 		textField_62.setColumns(10);
 		textField_62.setBackground(new Color(240, 230, 140));
 		textField_62.setBounds(777, 461, 57, 31);
-		textField_62.setEditable(False);
-		textField_62.setText("Have a baby/ get married(choose to go right or straight on)");
+		textField_62.setEditable(false);
+		textField_62.setText("Have a baby/ get married(choose to go right 		or straight on)");
 		frame.getContentPane().add(textField_62);
 		
 		//Straight path
@@ -635,7 +669,7 @@ public class Main {
 		textField_63.setColumns(10);
 		textField_63.setBackground(new Color(240, 230, 140));
 		textField_63.setBounds(844, 448, 57, 31);
-		textField_63.setEditable(False);
+		textField_63.setEditable(false);
 		textField_63.setText("()Blank tile");
 		frame.getContentPane().add(textField_63);
 		
@@ -643,7 +677,7 @@ public class Main {
 		textField_64.setColumns(10);
 		textField_64.setBackground(new Color(240, 230, 140));
 		textField_64.setBounds(902, 436, 57, 31);
-		textField_64.setEditable(False);
+		textField_64.setEditable(false);
 		textField_64.setText("Payday");
 		frame.getContentPane().add(textField_64);
 		
@@ -651,7 +685,7 @@ public class Main {
 		textField_65.setColumns(10);
 		textField_65.setBackground(new Color(240, 230, 140));
 		textField_65.setBounds(970, 404, 57, 31);
-		textField_65.setEditable(False);
+		textField_65.setEditable(false);
 		textField_65.setText("Uni or Career");
 		frame.getContentPane().add(textField_65);
 		
@@ -659,7 +693,7 @@ public class Main {
 		textField_66.setColumns(10);
 		textField_66.setBackground(new Color(240, 230, 140));
 		textField_66.setBounds(1038, 388, 57, 31);
-		textField_66.setEditable(False);
+		textField_66.setEditable(false);
 		textField_66.setText("Collect from each player 30K");
 		frame.getContentPane().add(textField_66);
 		
@@ -667,7 +701,7 @@ public class Main {
 		textField_67.setColumns(10);
 		textField_67.setBackground(new Color(240, 230, 140));
 		textField_67.setBounds(1085, 421, 57, 31);
-		textField_67.setEditable(False);
+		textField_67.setEditable(false);
 		textField_67.setText("Give option to buy a house");
 		frame.getContentPane().add(textField_67);
 		
@@ -675,7 +709,7 @@ public class Main {
 		textField_68.setColumns(10);
 		textField_68.setBackground(new Color(240, 230, 140));
 		textField_68.setBounds(1115, 461, 57, 31);
-		textField_68.setEditable(False);
+		textField_68.setEditable(false);
 		textField_68.setText("(Blank tile)");
 		frame.getContentPane().add(textField_68);
 		
@@ -683,7 +717,7 @@ public class Main {
 		textField_69.setColumns(10);
 		textField_69.setBackground(new Color(240, 230, 140));
 		textField_69.setBounds(1125, 505, 57, 31);
-		textField_69.setEditable(False);
+		textField_69.setEditable(false);
 		textField_69.setText("Take off");
 		frame.getContentPane().add(textField_69);
 		//Straight path joins with right path at Pay 40K
@@ -693,7 +727,7 @@ public class Main {
 		textField_70.setColumns(10);
 		textField_70.setBackground(new Color(240, 230, 140));
 		textField_70.setBounds(1115, 558, 57, 31);
-		textField_70.setEditable(False);
+		textField_70.setEditable(false);
 		textField_70.setText("Collect 20K");
 		frame.getContentPane().add(textField_70);
 		
@@ -701,7 +735,7 @@ public class Main {
 		textField_71.setColumns(10);
 		textField_71.setBackground(new Color(240, 230, 140));
 		textField_71.setBounds(1102, 603, 57, 31);
-		textField_71.setEditable(False);
+		textField_71.setEditable(false);
 		textField_71.setText("(Blank tile)");
 		frame.getContentPane().add(textField_71);
 		
@@ -709,7 +743,7 @@ public class Main {
 		textField_72.setColumns(10);
 		textField_72.setBackground(new Color(240, 230, 140));
 		textField_72.setBounds(1085, 645, 57, 31);
-		textField_72.setEditable(False);
+		textField_72.setEditable(false);
 		textField_72.setText("Pay 40K");
 		frame.getContentPane().add(textField_72);
 		
@@ -717,7 +751,7 @@ public class Main {
 		textField_73.setColumns(10);
 		textField_73.setBackground(new Color(240, 230, 140));
 		textField_73.setBounds(1038, 688, 57, 31);
-		textField_73.setEditable(False);
+		textField_73.setEditable(false);
 		textField_73.setText("(Blank tile)");
 		frame.getContentPane().add(textField_73);
 		
@@ -725,7 +759,7 @@ public class Main {
 		textField_74.setColumns(10);
 		textField_74.setBackground(new Color(240, 230, 140));
 		textField_74.setBounds(970, 693, 57, 31);
-		textField_74.setEditable(False);
+		textField_74.setEditable(false);
 		textField_74.setText("Spin to win 100K");
 		frame.getContentPane().add(textField_74);
 		
@@ -733,7 +767,7 @@ public class Main {
 		textField_75.setColumns(10);
 		textField_75.setBackground(new Color(240, 230, 140));
 		textField_75.setBounds(902, 693, 57, 31);
-		textField_75.setEditable(False);
+		textField_75.setEditable(false);
 		textField_75.setText("Give option to buy a house");
 		frame.getContentPane().add(textField_75);
 		
@@ -741,7 +775,7 @@ public class Main {
 		textField_76.setColumns(10);
 		textField_76.setBackground(new Color(240, 230, 140));
 		textField_76.setBounds(824, 688, 57, 31);
-		textField_76.setEditable(False);
+		textField_76.setEditable(false);
 		textField_76.setText("Get a pet");
 		frame.getContentPane().add(textField_76);
 		
@@ -749,7 +783,7 @@ public class Main {
 		textField_77.setColumns(10);
 		textField_77.setBackground(new Color(240, 230, 140));
 		textField_77.setBounds(747, 688, 57, 31);
-		textField_77.setEditable(False);
+		textField_77.setEditable(false);
 		textField_77.setText("(Blank tile)");
 		frame.getContentPane().add(textField_77);
 		
@@ -757,7 +791,7 @@ public class Main {
 		textField_78.setColumns(10);
 		textField_78.setBackground(new Color(240, 230, 140));
 		textField_78.setBounds(675, 676, 57, 31);
-		textField_78.setEditable(False);
+		textField_78.setEditable(false);
 		textField_78.setText("Collect 30K");
 		frame.getContentPane().add(textField_78);
 		
@@ -765,7 +799,7 @@ public class Main {
 		textField_79.setColumns(10);
 		textField_79.setBackground(new Color(240, 230, 140));
 		textField_79.setBounds(613, 632, 57, 31);
-		textField_79.setEditable(False);
+		textField_79.setEditable(false);
 		textField_79.setText("Uni or Career");
 		frame.getContentPane().add(textField_79);
 		
@@ -773,7 +807,7 @@ public class Main {
 		textField_80.setColumns(10);
 		textField_80.setBackground(new Color(240, 230, 140));
 		textField_80.setBounds(613, 590, 57, 31);
-		textField_80.setEditable(False);
+		textField_80.setEditable(false);
 		textField_80.setText("(Blank tile)");
 		frame.getContentPane().add(textField_80);
 		
@@ -781,7 +815,7 @@ public class Main {
 		textField_81.setColumns(10);
 		textField_81.setBackground(new Color(240, 230, 140));
 		textField_81.setBounds(613, 548, 57, 31);
-		textField_81.setEditable(False);
+		textField_81.setEditable(false);
 		textField_81.setText("Go to Disney World(Collect disney token)");
 		frame.getContentPane().add(textField_81);
 		//End of island three
@@ -791,7 +825,7 @@ public class Main {
 		textField_82.setColumns(10);
 		textField_82.setBackground(new Color(240, 230, 140));
 		textField_82.setBounds(692, 579, 57, 31);
-		textField_82.setEditable(False);
+		textField_82.setEditable(false);
 		textField_82.setText("Collect 50K");
 		frame.getContentPane().add(textField_82);
 		
@@ -799,7 +833,7 @@ public class Main {
 		textField_83.setColumns(10);
 		textField_83.setBackground(new Color(240, 230, 140));
 		textField_83.setBounds(766, 568, 57, 31);
-		textField_83.setEditable(False);
+		textField_83.setEditable(false);
 		textField_83.setText("Give option of buying a house");
 		frame.getContentPane().add(textField_83);
 		
@@ -807,7 +841,7 @@ public class Main {
 		textField_84.setColumns(10);
 		textField_84.setBackground(new Color(240, 230, 140));
 		textField_84.setBounds(855, 558, 57, 31);
-		textField_84.setEditable(False);
+		textField_84.setEditable(false);
 		textField_84.setText("Spin to win");
 		frame.getContentPane().add(textField_84);
 		
@@ -815,7 +849,7 @@ public class Main {
 		textField_85.setColumns(10);
 		textField_85.setBackground(new Color(240, 230, 140));
 		textField_85.setBounds(951, 558, 57, 31);
-		textField_85.setEditable(False);
+		textField_85.setEditable(false);
 		textField_85.setText("(Blank tile)");
 		frame.getContentPane().add(textField_85);
 		
@@ -823,7 +857,7 @@ public class Main {
 		textField_86.setColumns(10);
 		textField_86.setBackground(new Color(240, 230, 140));
 		textField_86.setBounds(1038, 558, 57, 31);
-		textField_86.setEditable(False);
+		textField_86.setEditable(false);
 		textField_86.setText("Pay 30K");
 		frame.getContentPane().add(textField_86);
 		
@@ -831,7 +865,7 @@ public class Main {
 		textField_87.setColumns(10);
 		textField_87.setBackground(new Color(240, 230, 140));
 		textField_87.setBounds(613, 505, 86, 31);
-		textField_87.setEditable(False);
+		textField_87.setEditable(false);
 		textField_87.setText("Stop (Collect 100K)");
 		frame.getContentPane().add(textField_87);
 		
@@ -839,7 +873,7 @@ public class Main {
 		textField_88.setColumns(10);
 		textField_88.setBackground(new Color(240, 230, 140));
 		textField_88.setBounds(58, 461, 57, 31);
-		textField_88.setEditable(False);
+		textField_88.setEditable(false);
 		textField_88.setText("(Blank tile)");
 		frame.getContentPane().add(textField_88);
 		
@@ -847,7 +881,7 @@ public class Main {
 		textField_89.setColumns(10);
 		textField_89.setBackground(new Color(240, 230, 140));
 		textField_89.setBounds(132, 481, 57, 31);
-		textField_89.setEditable(False);
+		textField_89.setEditable(false);
 		textField_89.setText("(Blank tile)");
 		frame.getContentPane().add(textField_89);
 		
@@ -855,7 +889,7 @@ public class Main {
 		textField_90.setColumns(10);
 		textField_90.setBackground(new Color(240, 230, 140));
 		textField_90.setBounds(199, 505, 57, 31);
-		textField_90.setEditable(False);
+		textField_90.setEditable(false);
 		textField_90.setText("Have a baby/ get married");
 		frame.getContentPane().add(textField_90);
 		
@@ -863,7 +897,7 @@ public class Main {
 		textField_91.setColumns(10);
 		textField_91.setBackground(new Color(240, 230, 140));
 		textField_91.setBounds(267, 515, 57, 31);
-		textField_91.setEditable(False);
+		textField_91.setEditable(false);
 		textField_91.setText("Collect 20K");
 		frame.getContentPane().add(textField_91);
 		
@@ -871,7 +905,7 @@ public class Main {
 		textField_92.setColumns(10);
 		textField_92.setBackground(new Color(240, 230, 140));
 		textField_92.setBounds(331, 547, 57, 31);
-		textField_92.setEditable(False);
+		textField_92.setEditable(false);
 		textField_92.setText("Payday");
 		frame.getContentPane().add(textField_92);
 		
@@ -879,7 +913,7 @@ public class Main {
 		textField_93.setColumns(10);
 		textField_93.setBackground(new Color(240, 230, 140));
 		textField_93.setBounds(364, 590, 57, 31);
-		textField_93.setEditable(False);
+		textField_93.setEditable(false);
 		textField_93.setText("(Blank tile)");
 		frame.getContentPane().add(textField_93);
 		
@@ -887,8 +921,8 @@ public class Main {
 		textField_94.setColumns(10);
 		textField_94.setBackground(new Color(240, 230, 140));
 		textField_94.setBounds(387, 632, 57, 31);
-		textField_94.setEditable(False);
-		textField_94.setText("(Blank tile), choose to go right or straight path");
+		textField_94.setEditable(false);
+		textField_94.setText("(Blank tile), choose to go right or 			straight path");
 		frame.getContentPane().add(textField_94);
 		
 		//right path
@@ -896,7 +930,7 @@ public class Main {
 		textField_95.setColumns(10);
 		textField_95.setBackground(new Color(240, 230, 140));
 		textField_95.setBounds(20, 515, 57, 31);
-		textField_95.setEditable(False);
+		textField_95.setEditable(false);
 		textField_95.setText("Sue another player for 100K");
 		frame.getContentPane().add(textField_95);
 		
@@ -904,15 +938,15 @@ public class Main {
 		textField_96.setColumns(10);
 		textField_96.setBackground(new Color(240, 230, 140));
 		textField_96.setBounds(30, 558, 57, 31);
-		textField_96.setEditable(False);
-		textField_96.setText("Tour around Belfast, pay 20K(Collect sightseeing token)");
+		textField_96.setEditable(false);
+		textField_96.setText("Tour around Belfast, pay 20K(Collect 			sightseeing token)");
 		frame.getContentPane().add(textField_96);
 		
 		textField_97 = new JTextField();
 		textField_97.setColumns(10);
 		textField_97.setBackground(new Color(240, 230, 140));
 		textField_97.setBounds(54, 608, 57, 31);
-		textField_97.setEditable(False);
+		textField_97.setEditable(false);
 		textField_97.setText("Collect 50K");
 		frame.getContentPane().add(textField_97);
 		//Join back up with textField_85
@@ -922,11 +956,56 @@ public class Main {
 		textField_98.setColumns(10);
 		textField_98.setBackground(new Color(240, 230, 140));
 		textField_98.setBounds(80, 650, 57, 31);
-		textField_98.setEditable(False);
+		textField_98.setEditable(false);
 		textField_98.setText("End game");
 		frame.getContentPane().add(textField_98);
 		
+		ImageIcon spinner = new ImageIcon("src/gameOfLife/imgs/spinner.png");
+		ImageIcon spinnerMoving = new ImageIcon("src/gameOfLife/imgs/movingSpinner.png");
+		JLabel spinningImage = new JLabel();
+		spinningImage.setBounds(430, 115, 200, 200);
+		spinningImage.setIcon(spinnerMoving);
+		spinningImage.setVisible(true);
+		JLabel spinImage = new JLabel();
+		spinImage.setBounds(430, 115, 200, 200);
+		spinImage.setIcon(spinner);
+		spinImage.setVisible(true);
+		
+		 
+		
+		frame.add(spinImage);
+		frame.add(spinningImage);
+		
+	
+
+		spinButton = new JButton("Spin the Wheel");
+		spinButton.setBounds(480, 700, 150, 31);
+		spinButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+//				 int delay = 1000; //milliseconds
+//				  ActionListener taskPerformer = new ActionListener() {
+//				      public void actionPerformed(ActionEvent evt) {
+//				          //...Perform a task...
+//				      }
+//				  };
+//				  new Timer(3000, taskPerformer)
+//				spinImage.setVisible(false);
+			}
+		});
+		frame.getContentPane().add(spinButton);
+}
+	
+	public int spinWheel()
+	{
+		Random x = new Random();
+		int randomNum = x.nextInt(7);
+		if (randomNum == 0)
+		{
+			randomNum = 1;
+		}
+		System.out.println(randomNum);
+		return randomNum;
 	}
 }
-
-
