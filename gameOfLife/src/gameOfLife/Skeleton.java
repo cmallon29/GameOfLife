@@ -197,7 +197,8 @@ public class Skeleton
 		  images[6] = new ImageIcon("src/gameOfLife/imgs/numbers/6.png");
 		  
 		ImageIcon blueCar = new ImageIcon("src/gameOfLife/imgs/Profile pics/Cars/blue_player.png");
-				  
+		ImageIcon greenCar = new ImageIcon("src/gameOfLife/imgs/Profile pics/Cars/green_player.png");
+
 		
 		ImageIcon spinner = new ImageIcon("src/gameOfLife/imgs/spinner.png");
 		ImageIcon spinnerMoving = new ImageIcon("src/gameOfLife/imgs/movingSpinner.png");
@@ -295,9 +296,15 @@ public class Skeleton
 		  int carChoice = JOptionPane.showOptionDialog(null, "What colour of car do you wish to use?", "Choose a car colour",
 		      JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
 		      null, carOptions, carOptions[0]);
-		}
-		setPlayers();
-		
+		  if(carChoice == 0)
+		  {
+			  player.get(i).setCarColour("Blue");
+		  }
+		  if(carChoice == 1)
+		  {
+			  player.get(i).setCarColour("Green");
+		  }
+		}		
 		gameOn = true;
 		currentPlayer = 0;
 		bluePlayer = new JLabel();
@@ -305,6 +312,16 @@ public class Skeleton
 		bluePlayer.setIcon(blueCar);
 		bluePlayer.setVisible(true);
 		frame.add(bluePlayer);
+
+		if( totPlayers>0)
+		{
+			greenPlayer = new JLabel();
+			greenPlayer.setBounds(528, 37, 86, 31);
+			greenPlayer.setIcon(greenCar);
+			greenPlayer.setVisible(true);
+			frame.add(greenPlayer);
+		}
+		setPlayers();
 
 		//main island
 		textField_1 = new JTextField();
@@ -1103,7 +1120,7 @@ public class Skeleton
 		player1.setBounds(1250, 0, 400, 125);
 		player1.setVisible(true);
 		player1.setText("<html>Player 1 <br>Name: " + player.get(0).getName() + "<br>Money: " + player.get(0).getMoney()
-				+ "</html>");
+				+ "<br>Car: " + player.get(0).getCarColour()+"</html>");
 		player1.setForeground(Color.BLACK);
 		player1.setBackground(Color.WHITE);
 		player1.setOpaque(true);
@@ -1115,7 +1132,7 @@ public class Skeleton
 		player2.setBounds(1250, 125, 400, 125);
 		player2.setVisible(true);
 		player2.setText("<html>Player 2 <br>Name: " + player.get(1).getName() + "<br>Money: " + player.get(1).getMoney()
-				+ "</html>");
+				+ "<br>Car: " + player.get(1).getCarColour()+"</html>");
 		player2.setForeground(Color.BLACK);
 		player2.setBackground(Color.WHITE);
 		player2.setOpaque(true);
@@ -1127,7 +1144,7 @@ public class Skeleton
 		player3.setBounds(1250, 250, 400, 125);
 		player3.setVisible(true);
 		player3.setText("<html>Player 3 <br>Name: " + player.get(2).getName() + "<br>Money: " + player.get(2).getMoney()
-				+ "</html>");
+				+ "<br>Car: " + player.get(2).getCarColour()+"</html>");
 		player3.setForeground(Color.BLACK);
 		player3.setBackground(Color.WHITE);
 		player3.setOpaque(true);
@@ -1139,7 +1156,7 @@ public class Skeleton
 		player4.setBounds(1250, 375, 400, 125);
 		player4.setVisible(true);
 		player4.setText("<html>Player 4 <br>Name: " + player.get(3).getName() + "<br>Money: " + player.get(3).getMoney()
-				+ "</html>");
+				+ "<br>Car: " + player.get(3).getCarColour()+"</html>");
 		player4.setForeground(Color.BLACK);
 		player4.setBackground(Color.WHITE);
 		player4.setOpaque(true);
@@ -1164,7 +1181,30 @@ public class Skeleton
 	public void updatePlayers()
 	{
 		player1.setText("<html>Player 1 <br>Name: " + player.get(0).getName() + "<br>Money: " + player.get(0).getMoney()
-				+ "</html>");
+				+ "<br>Car: " + player.get(0).getCarColour()+"</html>");
+		if(totPlayers>0)
+		{
+			player2.setText("<html>Player 2 <br>Name: " + player.get(1).getName() + "<br>Money: " + player.get(1).getMoney()
+					+ "<br>Car: " + player.get(1).getCarColour()+"</html>");
+			if(totPlayers>1)
+			{
+				player3.setText("<html>Player 3 <br>Name: " + player.get(2).getName() + "<br>Money: " + player.get(2).getMoney()
+						+ "<br>Car: " + player.get(2).getCarColour()+"</html>");
+				if(totPlayers>2)
+				{
+					player4.setText("<html>Player 4 <br>Name: " + player.get(3).getName() + "<br>Money: " + player.get(3).getMoney()
+							+ "<br>Car: " + player.get(3).getCarColour()+"</html>");
+				}
+			}
+		}
+		if(currentPlayer!=totPlayers)
+		{
+			currentPlayer++;
+		}
+		else
+		{
+			currentPlayer=0;
+		}
 	}
 	public void checkPos()
 	{
@@ -1390,83 +1430,143 @@ public class Skeleton
 		int pos = player.get(currentPlayer).getPosition();
 		if(pos == 3)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(379, 106, 66, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(379, 106, 66, 31);
 		}
 		if(pos == 4)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(361, 148, 66, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(361, 148, 66, 31);
 		}
 		if(pos == 5)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(328, 190, 78, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(328, 190, 78, 31);
 		}
 		if(pos == 6)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(331, 232, 75, 45);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(331, 232, 75, 45);
 		}
 		if(pos == 7)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(342, 288, 75, 45);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(342, 288, 75, 45);
 		}
 		if(pos == 8)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(379, 344, 78, 45);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(379, 344, 78, 45);
 		}
 		if(pos == 9)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(473, 363, 67, 45);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(473, 363, 67, 45);
 		}
 		if(pos == 10)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(550, 344, 75, 45);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(550, 344, 75, 45);
 		}
 		if(pos == 11)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(632, 324, 67, 38);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(632, 324, 67, 38);
 		}
 		if(pos == 12)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(631, 96, 86, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(631, 96, 86, 31);
 		}
 		if(pos == 13)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(658, 138, 86, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(658, 138, 86, 31);
 		}
 		if(pos == 14)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(680, 187, 86, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(680, 187, 86, 31);
 		}
 		if(pos == 15)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(708, 238, 76, 40);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(708, 238, 76, 40);
 		}
 		if(pos == 16)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(717, 286, 67, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(717, 286, 67, 31);
 		}
 		if(pos == 17)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(709, 328, 75, 31);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(709, 328, 75, 31);
 		}
 		if(pos == 18)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(682, 370, 67, 38);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(682, 370, 67, 38);
 		}
 		if(pos == 19)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(613, 400, 67, 38);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(613, 400, 67, 38);
 		}
 		if(pos == 20)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(539, 414, 67, 45);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(539, 414, 67, 45);
 		}
 		if(pos == 21)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(473, 417, 57, 38);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(473, 417, 57, 38);
 		}
 		if(pos == 22)
 		{
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Blue"))
 			bluePlayer.setBounds(390, 414, 75, 45);
+			if(player.get(currentPlayer).getCarColour().equalsIgnoreCase("Green"))
+			greenPlayer.setBounds(390, 414, 75, 45);
 		}
 		updatePlayers();
 	}
