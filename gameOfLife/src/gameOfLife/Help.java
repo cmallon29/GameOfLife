@@ -40,7 +40,7 @@ public class Help {
 		help.setLocationRelativeTo(null);
 		help.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel headerImage = new JLabel();
-		ImageIcon startIcon = new ImageIcon("src/gameOfLife/imgs/HelpScreen.jpe");
+		ImageIcon startIcon = new ImageIcon("src/gameOfLife/imgs/HelpScreen.jpeg");
 		headerImage.setIcon(startIcon);
 		help.add(headerImage);
 
