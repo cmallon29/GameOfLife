@@ -1,17 +1,22 @@
 package gameOfLife;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.imageio.*;
+import java.io.*;
 
 public class Help {
 	
 	private JFrame help;
 	
 	public static void main(String[] args) {
+		
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -34,14 +39,22 @@ public class Help {
 	
 	private void initialize() throws IOException 
 	{
-		help = new JFrame();
-		help.setTitle("Game of Life");
-		help.setBounds(100, 100, 1024, 759);
-		help.setLocationRelativeTo(null);
-		help.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JLabel headerImage = new JLabel();
-		ImageIcon startIcon = new ImageIcon("src/gameOfLife/imgs/HelpScreen.jpeg");
-		headerImage.setIcon(startIcon);
-		help.add(headerImage);
-
-}}
+		
+	help = new JFrame();
+	help.setTitle("Help");
+	help.setLocationRelativeTo(null);
+	help.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	help.setVisible(true);
+	help.setResizable(true);
+	help.setSize(1024,759);
+	
+	
+	ImageIcon helpBackground = new ImageIcon("src/gameOfLife/imgs/Help_Screen.png");
+	JLabel helpBackgroundLabel = new JLabel();
+	helpBackgroundLabel.setIcon(helpBackground);
+	helpBackgroundLabel.setVisible(true);
+	help.getContentPane().add(helpBackgroundLabel);
+	
+	
+}
+	}

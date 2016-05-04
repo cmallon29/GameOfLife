@@ -74,7 +74,6 @@ public class StartScreen
 			public void actionPerformed(ActionEvent e)
 			{
 				Help.main(null);
-				startFrame.dispose();
 			}
 		});
 		startButton = new JButton();
