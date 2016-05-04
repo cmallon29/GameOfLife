@@ -75,7 +75,7 @@ public class SkeletonTest{
 	@Test
 	public void testShowUniCards(int response) {
 		Skeleton tester = new Skeleton();
-		if(tester.showUniCards(response)){
+		if(tester.showUniCards()){
 			tester.showUniCards(0);
 			tester.showUniCards(1);
 			tester.showUniCards(2);
