@@ -4284,5 +4284,7 @@ public class Skeleton
 		}		
 		CareerCard.add(cChoosen);
 	}
+
+	
 	
 }

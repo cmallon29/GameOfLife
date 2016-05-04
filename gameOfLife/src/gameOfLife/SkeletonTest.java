@@ -6,184 +6,229 @@ import org.junit.Test;
 
 public class SkeletonTest{
 
-	@Test
-	public void testMain() { {
-		
-	}
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testMain() { {
+//		
+//	}
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSkeleton() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSetPlayerAmount()
+//	{
+//		Skeleton tester = new Skeleton();
+//		
+//		
+//	}
+//	
+//
+//
+//	@Test
+//	public void testSetPlayerOne(){
+//		
+//		Skeleton tester = new Skeleton();
+//		
+//	}
+//	
+//
+//	@Test
+//	public void testSetPlayerTwo() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSetPlayerThree() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSetPlayerFour() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSetPlayers() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testUpdatePlayers() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCheckPos() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
 
 	@Test
-	public void testSkeleton() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetPlayerAmount()
-	{
+	public void testShowUniCards(int response) {
 		Skeleton tester = new Skeleton();
+		if(tester.showUniCards(response)){
+			tester.showUniCards(0);
+			tester.showUniCards(1);
+			tester.showUniCards(2);
+			tester.showUniCards(3);
+			tester.showUniCards(4);
+			tester.showUniCards(5);
+		}
+		else {
+			fail("Not yet implemented");
+		}
 		
-		
-	}
-	
-
-
-	@Test
-	public void testSetPlayerOne(){
-		
-		Skeleton tester = new Skeleton();
-		tester.setPlayerOne("Name"+ Player.class.getName(), tester.setPlayerOne());
-	}
-	
-
-	@Test
-	public void testSetPlayerTwo() {
-		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testSetPlayerThree() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetPlayerFour() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSetPlayers() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUpdatePlayers() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCheckPos() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testShowUniCards() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testShowCareerCards() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUpdatePos() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUpdateCar() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDegreeOrJob() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSpinWheel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSpinForMoney() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPayDay() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testSuePlayer() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCollectFifty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCollectForty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCollectThirty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCollectTwenty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCollectTen() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCollectTwentyFromPlayers() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCollectTenFromPlayers() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPayForty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPayThirty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPayTwenty() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPayTen() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLifeCards() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHouseCards() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testShowHouseCards() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCareerCards() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testShowCareerCards() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testUpdatePos() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testUpdateCar() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testDegreeOrJob() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSpinWheel() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSpinForMoney() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testPayDay() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testSuePlayer() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCollectFifty() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCollectForty() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCollectThirty() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCollectTwenty() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCollectTen() {
+//		
+//		Skeleton tester = new Skeleton();
+//		
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCollectTwentyFromPlayers(){
+//	Skeleton tester = new Skeleton();
+//	
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCollectTenFromPlayers() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testPayForty() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testPayThirty() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testPayTwenty() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testPayTen() {
+//		
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testLifeCards() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testHouseCards() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testShowHouseCards() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testCareerCards() {
+//		Skeleton tester = new Skeleton();
+//		fail("Not yet implemented");
+//	}
 
 }
